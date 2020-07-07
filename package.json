@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,12 +14,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "1.19.0",
-    "cors": "2.8.5",
-    "express": "4.17.1",
-    "mysql2": "2.1.0",
-    "nodemon": "2.0.4",
-    "sequelize": "6.2.4"
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "mongoose": "^5.9.7",
+    "nodemon": "^2.0.2"
   },
   "bugs": {
     "url": "https://github.com/tharindu97/VueJS_TODO_APP/issues"

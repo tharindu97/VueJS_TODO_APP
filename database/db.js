@@ -1,19 +1,17 @@
-const Sequelize = require('sequelize');
-const db = {};
-const sequelize = new Sequelize('nodejs_tasks', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql',
-    operatorsAliases: false,
+const mongoose = require('mongoose');
+const mongoUrl = 'mongodb+srv://Thari:Tharindu97@cluster0-ykfr0.azure.mongodb.net/test?retryWrites=true&w=majority';
 
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
+const connectDB = async () => {
+    try {
+        await mongoose.connect(mongoUrl,
+            { 
+                useUnifiedTopology: true,
+                useNewUrlParser: true
+            });
+        console.log('Connect mongoDB');
+    } catch (error) {
+        console.log(error.message);
     }
-});
+};
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-module.exports = db;
+module.exports = connectDB;

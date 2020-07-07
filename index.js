@@ -1,21 +1,15 @@
-var express = require('express');
-var bosyparser = require('body-parser');
+const express = require('express');
+const app = express();
+const connectDB = require('./database/db');
+//Models
+require('./model/todos');
+// body paser wenuwat && data add middleware
+app.use(express.json());
 
-var tasks = require('')
-var cors = require('cors');
-const bodyParser = require('body-parser');
-
-
-var port = 3000;
-
-var app = express();
-app.use(cors());
-
-app.use(bodyParser.json);
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use('/api', tasks);
-
-app.listen(port, function(){
-    console.log('Server started on port' + port);
-})
+//Connect mongodb
+connectDB();
+// create port
+const PORT = process.env.PORT || 5100
+app.listen(PORT, () =>{
+    console.log(`Server Started at ${PORT}`);
+});
