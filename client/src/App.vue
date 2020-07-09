@@ -4,9 +4,12 @@
             <div class="row">
                 <div class="col-md-6 mx-auto">
                     <h1 class="text-center">TODO APP</h1>
+
                     <form v-on:submit.prevent = "addNewTask">
                         <label for="tasknameinput">Task Name</label>
                         <input v-model="taskname" type="text" id="tasknameinput" class="form-control" placeholder="Add The Task Here">
+                        <label for="tasknameinput">Description</label>
+                        <input v-model="dscname" type="text" id="dscnameinput" class="form-control" placeholder="Add The Description Here">
                         <button v-if="this.isEdit == false" type="submit" class="btn btn-success btn-block mt-3">
                             Submit
                         </button>
@@ -14,19 +17,22 @@
                             Update
                         </button>
                     </form>
-
+                    
                     <table class="table">
                         <tr v-for="(todo) in todos"
                          v-bind:key="todo._id"
-                         v-bind:title="todo.title">
+                         v-bind:title="todo.title"
+                         v-bind:description="todo.description">
 
                          <td class="text-left">{{todo.title}}</td>
+                         <td class="text-left">{{todo.description}}</td>
                          <td class="text-right">
                            <button class="btn btn-info" v-on:click="editTask(todo.title, todo._id)">Edit</button>
                            <button class="btn btn-danger" v-on:click="deleteTask(todo._id)">Delete</button>
                          </td>
                         </tr>
                     </table>
+                    
                 </div>
             </div>
         </div>
